@@ -1,0 +1,180 @@
+body {
+  background-color: #eaeaea;
+  padding-top: 10px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+h1,
+h2 {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+p {
+  margin-bottom: 5px;
+}
+
+input {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-right: 6px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #4c6daf;
+}
+button:hover {
+  background-color: #385fa8;
+}
+button:active {
+  background-color: #2f5191;
+}
+
+.feedback-container {
+  height: 30px; /* Adjust the height as needed */
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.feedback-text {
+  margin: 0;
+  color: green; /* Set the default text color to green */
+}
+.incorrect {
+  color: red; /* Set the text color to red for incorrect answers */
+}
+
+.endscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+}
+.endscreen ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  text-align: left; /* Align text to the left within the list items */
+}
+.endscreen li {
+  margin-bottom: 5px; /* Add some spacing between list items */
+  margin-left: 5px;
+}
+.endcorrect {
+  align-items: center;
+}
+
+.restartbutton {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 150px;
+  height: 50px;
+}
+
+.revealbutton {
+  width: 150px;
+  height: 50px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgb(50, 50, 50);
+}
+.revealbutton:hover {
+  background-color: rgb(40, 40, 40);
+}
+.revealbutton:active {
+  background-color: rgb(30, 30, 30);
+}
+
+.switchbutton {
+  width: 150px;
+  height: 50px;
+  background-color: rgb(65, 65, 65);
+}
+.switchbutton:hover {
+  background-color: rgb(50, 50, 50);
+}
+.switchbutton:active {
+  background-color: rgb(30, 30, 30);
+}
+
+.startgamebutton {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 50px;
+  border: #000000;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: outset;
+}
+
+.start1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+}
+.start2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+}
+
+.formbuttons {
+  display: flex;
+  justify-content: center;
+}
+
+.addwordbutton {
+  background-color: rgb(10, 148, 10);
+  width: 120px;
+  height: 50px;
+  margin: 5px;
+}
+.addwordbutton:hover {
+  background-color: rgb(8, 121, 8);
+}
+
+.showwordsbutton {
+  background-color: rgb(65, 65, 65);
+  width: 120px;
+  height: 50px;
+  margin: 5px;
+}
+.showwordsbutton:hover {
+  background-color: rgb(50, 50, 50);
+}
+
+.deletebutton {
+  background-color: rgb(180, 0, 0);
+  width: 120px;
+  height: 50px;
+  margin: 5px;
+}
+.deletebutton:hover {
+  background-color: rgb(160, 0, 0);
+}
+
+.hcbutton {
+  width: 120px;
+  height: 50px;
+  margin: 5px;
+}

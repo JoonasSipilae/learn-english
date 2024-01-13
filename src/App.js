@@ -1,8 +1,10 @@
+// Imports
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css"; // Import the CSS file
 import ManagePanel from "./ManagePanel"; // Manage panel
 
 function App() {
+  // Set States
   const [allWords, setAllWords] = useState([]);
   const [shuffledWords, setShuffledWords] = useState([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -17,13 +19,14 @@ function App() {
   const [displayCorrectAnswers, setDisplayCorrectAnswers] = useState(false);
   const [displayIncorrectAnswers, setDisplayIncorrectAnswers] = useState(false);
   const [translationDirection, setTranslationDirection] =
-    useState("finnishToEnglish");
+    useState("finnishToEnglish"); // Fin to Eng or Eng to Fin
   const [gameStarted, setGameStarted] = useState(false); // Track whether the game has started
 
   useEffect(() => {
     fetchWords();
   }, []);
 
+  // Fetch words from database
   const fetchWords = () => {
     fetch("http://localhost:3001/words")
       .then((response) => response.json())
@@ -34,6 +37,7 @@ function App() {
       .catch((error) => console.error("Error:", error));
   };
 
+  // Translation direction eng-fin or fin-eng
   const toggleTranslationDirection = () => {
     setTranslationDirection((prevDirection) =>
       prevDirection === "finnishToEnglish"
@@ -42,6 +46,7 @@ function App() {
     );
   };
 
+  // Get current translatable word
   const getCurrentWord = () => {
     if (
       shuffledWords.length === 0 ||
@@ -63,25 +68,28 @@ function App() {
     setUserInput(event.target.value);
   };
 
+  // Enter = submit
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       checkAnswer();
     }
   };
 
+  // If the game hasn't started, do nothing
   const checkAnswer = () => {
     if (!gameStarted) {
-      return; // If the game hasn't started, do nothing
+      return;
     }
 
+    // If list of words is empty
     if (shuffledWords.length === 0 || gameOver) {
       console.error("No words available or game over.");
       return;
     }
 
+    // Display a warning and prevent checking answer if the input is empty
     if (userInput.trim() === "") {
       // DISPLAYING WARNING DOESNT WORK. WHY ???
-      // Display a warning and prevent checking answer if the input is empty
       setFeedbackText(
         "Cannot submit an empty answer. Please enter a valid answer."
       );
@@ -90,10 +98,12 @@ function App() {
       return;
     }
 
+    // Works in any upper/lowercase combination in answer
     const currentWord = shuffledWords[currentWordIndex];
     const userInputLower = userInput.toLowerCase();
     let correctAnswer;
 
+    // Fetch answer in the right language
     if (translationDirection === "finnishToEnglish") {
       correctAnswer = currentWord.english.toLowerCase();
     } else {
@@ -104,6 +114,7 @@ function App() {
 
     setIsCorrect(isAnswerCorrect);
 
+    // Keep count of right / wrong answers. Show feedback
     if (isAnswerCorrect) {
       setCorrectCount((count) => count + 1);
       setCorrectAnswers((prevAnswers) => [...prevAnswers, currentWord]); // Add correct answer to the array
@@ -111,6 +122,7 @@ function App() {
       setIncorrectAnswers((prevAnswers) => [...prevAnswers, currentWord]); // Add incorrect answer to the array
     }
 
+    // Show correct or incorrect message
     setFeedbackText(isAnswerCorrect ? "Correct!" : "Incorrect.");
 
     if (!isAnswerCorrect) {
@@ -118,10 +130,10 @@ function App() {
     }
 
     if (currentWordIndex === shuffledWords.length - 1) {
-      setGameOver(true);
+      setGameOver(true); // if no words left, setGameOver true
     } else {
       setCurrentWordIndex((prevIndex) => prevIndex + 1);
-      setUserInput("");
+      setUserInput(""); // reset input field
 
       setTimeout(() => {
         setIsCorrect(null);
@@ -131,12 +143,31 @@ function App() {
     }
   };
 
+  // Show warning when trying to refresh / leave page while game is in progress
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      if (gameStarted) {
+        const message = "Leaving the page will end the game. Are you sure?";
+        event.returnValue = message; // Standard for most browsers
+        return message; // For some older browsers
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [gameStarted]);
+
+  // set gamestarted to true when called
   const startGame = () => {
     setGameStarted(true);
   };
 
   const restartGame = () => {
     // Shuffle the array again when restarting the game
+    // Set states to default and reset game score
     setShuffledWords([...allWords].sort(() => Math.random() - 0.5));
     setCurrentWordIndex(0);
     setUserInput("");
@@ -146,22 +177,28 @@ function App() {
     setFeedbackText("");
     setCorrectAnswers([]);
     setIncorrectAnswers([]);
-    setGameStarted(false); // Reset gameStarted state
+    setGameStarted(false);
   };
 
+  //Modifies translatable word so that it starts with a capital letter
+  const formatWord = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  };
+
+  // progresscounter i / total
   const progressCounter = `${currentWordIndex + 1} / ${shuffledWords.length}`;
   const inputRef = useRef(null); // Create a ref to store the input element
 
   useEffect(() => {
     // Focus on the input element when the component mounts
     // This effect runs only once, on mount
-    // This doesnt work when the game is restarted. Fix ??? Used to work?
+    // This doesnt work when the game is restarted. Fix ??? Used to work???
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
 
-  // Return Header + App
+  // Return
   return (
     <div className="App">
       <div>
@@ -198,7 +235,7 @@ function App() {
               {translationDirection === "finnishToEnglish"
                 ? "Finnish:"
                 : "English:"}{" "}
-              {getCurrentWord()}
+              <b>{formatWord(getCurrentWord())}</b>
             </p>
             <input
               ref={inputRef}

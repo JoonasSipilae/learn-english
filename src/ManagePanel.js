@@ -1,6 +1,8 @@
+// Imports
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// Set States
 const ManagePanel = () => {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
@@ -12,6 +14,7 @@ const ManagePanel = () => {
   const [showAdminPanel, setShowAdminPanel] = useState(true); // Initially visible
   const [contentsHidden, setContentsHidden] = useState(false);
 
+  // Add password authentication to access panel
   const handleAuthentication = () => {
     // Check if the entered password is correct
     if (password === "admin123") {
@@ -20,7 +23,7 @@ const ManagePanel = () => {
     } else {
       alert("Incorrect password. Please try again.");
     }
-    setPassword("");
+    setPassword(""); // Empty finput field after submitting
   };
 
   useEffect(() => {
@@ -42,7 +45,7 @@ const ManagePanel = () => {
 
   const handleAddWord = async () => {
     try {
-      // Check if both fields are filled
+      // Check that both fin and eng fields are filled
       if (!finnishWord || !englishWord) {
         alert("Please enter both Finnish and English words.");
         return;
@@ -89,6 +92,7 @@ const ManagePanel = () => {
     }
   };
 
+  // Toggle admin panels visibility
   const handleToggleAdminPanel = () => {
     setShowAdminPanel(!showAdminPanel);
   };
@@ -104,6 +108,7 @@ const ManagePanel = () => {
     }
   };
 
+  // If user is not authenticated, show password input field
   if (!authenticated) {
     return (
       <div>
@@ -128,6 +133,7 @@ const ManagePanel = () => {
     );
   }
 
+  // If user is authenticated, show contents of panel
   return (
     <div>
       <h1>Manage words</h1>

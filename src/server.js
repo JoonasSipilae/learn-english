@@ -1,3 +1,4 @@
+// Use mysql and express
 const express = require("express");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
@@ -10,6 +11,7 @@ const port = 3001;
 var config = require("./config");
 const db = mysql.createConnection(config.databaseOptions);
 
+// Use cors
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -37,6 +39,7 @@ app.post("/addWord", (req, res) => {
   });
 });
 
+// Delete word with matching ID from database
 app.delete("/word/:id", (req, res) => {
   const { id } = req.params;
 

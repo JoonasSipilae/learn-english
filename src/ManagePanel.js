@@ -111,7 +111,7 @@ const ManagePanel = () => {
   // If user is not authenticated, show password input field
   if (!authenticated) {
     return (
-      <div>
+      <div className="authpanel">
         <h2>Manage Panel</h2>
         <label htmlFor="password">Enter Password: </label>
         <input
@@ -121,12 +121,13 @@ const ManagePanel = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
         <button onClick={handleAuthentication}>
           {authenticated ? "Re-authenticate" : "Authenticate"}
         </button>
         {authenticated && showAdminPanel && (
           <button onClick={handleToggleAdminPanel}>
-            {contentsHidden ? "Show Contents" : "Hide Contents"}
+            {contentsHidden ? "Show Panel" : "Hide Panel"}
           </button>
         )}
       </div>
@@ -135,8 +136,8 @@ const ManagePanel = () => {
 
   // If user is authenticated, show contents of panel
   return (
-    <div>
-      <h1>Manage words</h1>
+    <div className="managepanel">
+      <h1>Manage panel</h1>
 
       {contentsHidden && (
         <div>
@@ -149,7 +150,7 @@ const ManagePanel = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button onClick={handleToggleContentsVisibility}>
-            {contentsHidden ? "Show Contents" : "Hide Contents"}
+            {contentsHidden ? "Show Panel" : "Hide Panel"}
           </button>
         </div>
       )}
@@ -178,6 +179,7 @@ const ManagePanel = () => {
             />
           </div>
 
+          {/* Add, Hide, Exit buttons */}
           <div className="formbuttons">
             <button className="addwordbutton" onClick={handleAddWord}>
               Add Word
@@ -189,25 +191,28 @@ const ManagePanel = () => {
               className="hcbutton"
               onClick={handleToggleContentsVisibility}
             >
-              {contentsHidden ? "Show Contents" : "Hide Contents"}
+              {contentsHidden ? "Show Panel" : "Hide Panel"}
             </button>
           </div>
 
+          {/* List all the words + styling */}
           {showWords && (
             <div>
               <h2>All Words</h2>
               <ul style={{ listStyle: "none", padding: 0 }}>
                 {allWords.map((word) => (
                   <li key={word.id} style={{ marginBottom: "15px" }}>
-                    <div>
-                      id: <i>{word.id}</i>
+                    <div className="listid">
+                      id: <i>{word.id} </i>
                     </div>
+
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <div style={{ marginRight: "10px" }}>Finnish:</div>
                       <div>
                         <b>{word.finnish}</b>
                       </div>
                     </div>
+
                     <div style={{ display: "flex", alignItems: "center" }}>
                       <div style={{ marginRight: "10px" }}>English:</div>
                       <div>
@@ -229,6 +234,8 @@ const ManagePanel = () => {
               value={deleteId}
               onChange={(e) => setDeleteId(e.target.value)}
             />
+
+            {/* Delete button */}
             <button className="deletebutton" onClick={handleDeleteWord}>
               Delete Word
             </button>

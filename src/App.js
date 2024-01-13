@@ -148,7 +148,7 @@ function App() {
     const handleBeforeUnload = (event) => {
       if (gameStarted) {
         const message = "Leaving the page will end the game. Are you sure?";
-        event.returnValue = message; // Standard for most browsers
+        event.returnValue = message; // Default for most browsers
         return message; // For some older browsers
       }
     };
@@ -203,7 +203,7 @@ function App() {
     <div className="App">
       <div>
         <ManagePanel />
-        <h1>Learn English app</h1>
+        <h1>Learn English app!</h1>
         {!gameStarted && (
           <>
             <div className="start1">
@@ -228,30 +228,37 @@ function App() {
 
         {gameStarted && (
           <>
-            <p>
-              Question: {progressCounter}. Correct answers: {correctCount}
-            </p>
-            <p>
-              {translationDirection === "finnishToEnglish"
-                ? "Finnish:"
-                : "English:"}{" "}
-              <b>{formatWord(getCurrentWord())}</b>
-            </p>
-            <input
-              ref={inputRef}
-              type="text"
-              placeholder={
-                translationDirection === "finnishToEnglish"
-                  ? "English.."
-                  : "Finnish.."
-              }
-              value={userInput}
-              onChange={handleInputChange}
-              onKeyPress={handleKeyPress}
-            />
-            <button onClick={checkAnswer} disabled={displayFeedback}>
-              Check Answer
-            </button>
+            <div className="progresstext">
+              <p>
+                Question: {progressCounter}. Correct answers: {correctCount}
+              </p>
+            </div>
+
+            <div className="thegame">
+              <p>
+                {translationDirection === "finnishToEnglish"
+                  ? "Finnish: "
+                  : "English: "}{" "}
+                <b>{formatWord(getCurrentWord())}</b>
+              </p>
+
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder={
+                  translationDirection === "finnishToEnglish"
+                    ? "English.."
+                    : "Finnish.."
+                }
+                value={userInput}
+                onChange={handleInputChange}
+                onKeyPress={handleKeyPress}
+              />
+
+              <button className="checkanswerbutton" onClick={checkAnswer} disabled={displayFeedback}>
+                Check Answer
+              </button>
+            </div>
             {isCorrect !== null && (
               <div className="feedback-container">
                 <p className={`feedback-text ${!isCorrect ? "incorrect" : ""}`}>
@@ -265,9 +272,10 @@ function App() {
 
       {gameOver && (
         <div className="endscreen">
-          <h1>Thank you for playing!</h1>
+          <h2>Thank you for playing!</h2>
           <p>
-            Final score: {correctCount} out of {shuffledWords.length}
+            Final score: <b>{correctCount}</b> out of{" "}
+            <b>{shuffledWords.length}</b>
           </p>
           <button className="restartbutton" onClick={restartGame}>
             Play again
@@ -287,7 +295,7 @@ function App() {
               <h3>Correct Answers</h3>
               <ul>
                 {correctAnswers.map((answer, index) => (
-                  <li key={index} style={{ color: "#4CAF50" }}>
+                  <li key={index} style={{ color: "#307533" }}>
                     {answer.finnish} - {answer.english}
                   </li>
                 ))}
@@ -309,7 +317,7 @@ function App() {
               <h3>Incorrect Answers</h3>
               <ul>
                 {incorrectAnswers.map((answer, index) => (
-                  <li key={index} style={{ color: "#FF0000" }}>
+                  <li key={index} style={{ color: "#c40202" }}>
                     {answer.finnish} - {answer.english}
                   </li>
                 ))}

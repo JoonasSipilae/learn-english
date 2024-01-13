@@ -1,6 +1,7 @@
 body {
   background-color: #eaeaea;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .App {
@@ -11,10 +12,32 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.thegame {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.thegame p {
+  padding-right: 10px;
+}
+.thegame input {
+  margin-top: 20px;
+}
+.thegame button {
+  margin-top: 8px;
+}
+
+.checkanswerbutton {
+  border: #000000;
+  border-width: 1px;
+  border-style: outset;
+}
+
 h1,
 h2 {
   padding-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: center;
 }
@@ -51,11 +74,22 @@ button:active {
   overflow: hidden;
 }
 .feedback-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin: 0;
+  font-size: larger;
   color: green; /* Set the default text color to green */
 }
 .incorrect {
   color: red; /* Set the text color to red for incorrect answers */
+}
+
+.progresstext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .endscreen {
@@ -63,6 +97,17 @@ button:active {
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Center content vertically */
+  font-size: larger;
+
+  background-color: #b9d693;
+  border: #000000;
+  border-width: 2px;
+  border-style: outset;
+  border-radius: 20px;
+
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
 }
 .endscreen ul {
   list-style-type: none; /* Remove bullet points */
@@ -84,6 +129,10 @@ button:active {
   padding-right: 20px;
   width: 150px;
   height: 50px;
+  margin-top: 10px;
+  border: #000000;
+  border-width: 2px;
+  border-style: outset;
 }
 
 .revealbutton {
@@ -103,8 +152,8 @@ button:active {
 }
 
 .switchbutton {
-  width: 150px;
-  height: 50px;
+  width: 180px;
+  height: 60px;
   background-color: rgb(65, 65, 65);
 }
 .switchbutton:hover {
@@ -117,8 +166,8 @@ button:active {
 .startgamebutton {
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 150px;
-  height: 50px;
+  width: 180px;
+  height: 60px;
   border: #000000;
   border-radius: 10px;
   border-width: 3px;
@@ -177,4 +226,55 @@ button:active {
   width: 120px;
   height: 50px;
   margin: 5px;
+}
+
+.authpanel {
+  background-color: #c0c0c0;
+  border: #000000;
+  border-width: 2px;
+  border-style: outset;
+  border-radius: 20px;
+
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+
+.authpanel button {
+  border: #000000;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: outset;
+  margin-left: 5px;
+}
+
+.authpanel input {
+  background-color: rgb(245, 245, 245);
+}
+
+.managepanel {
+  background-color: #c0c0c0;
+  border: #000000;
+  border-width: 2px;
+  border-style: outset;
+  border-radius: 20px;
+
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+
+.managepanel button {
+  border: #000000;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: outset;
+}
+
+.managepanel input {
+  background-color: rgb(245, 245, 245);
+}
+
+.listid {
+  color: rgb(160, 0, 0);
 }

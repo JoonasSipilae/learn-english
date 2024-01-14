@@ -16,10 +16,13 @@ On "Panel" page:
 - Click "Hide panel" or exit tab to exit panel (you need to authenticate again when entering the tab again)
 - Type words ID and click "Delete word" to delete it from the database.
 
+If you use the app on localhost, you need to start server.js before accessing app.
+
 # What is the purpose of the application ?
 
 This app is designed to teach finnish people english or vice versa.
 This project was made as a part of a school course at Tampere University of Applied Sciences.
+The purpose of the project was to learn how to build a full stack application using react, sql and express.
 
 # What does the application consist of ?
 

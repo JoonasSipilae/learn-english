@@ -9,6 +9,8 @@ import Main from "./Main";
 import Info from "./Info";
 import ManagePanel from "./ManagePanel";
 
+
+
 //Navbar with router
 function App() {
   return (

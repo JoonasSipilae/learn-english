@@ -24,20 +24,11 @@ function Main() {
   useEffect(() => {
     fetchWords();
   }, []);
-  /*
+
   // Fetch words from database
   const fetchWords = () => {
-    fetch("http://localhost:3001/words")
-      .then((response) => response.json())
-      .then((data) => {
-        setAllWords(data);
-        setShuffledWords([...data].sort(() => Math.random() - 0.5)); // Shuffle the array
-      })
-      .catch((error) => console.error("Error:", error));
-  };
-*/
-  const fetchWords = () => {
-    fetch("/api/words") // Use relative path to the serverless function
+    //fetch("http://localhost:3001/words")
+    fetch("https://learn-english-123-server.onrender.com/words")
       .then((response) => response.json())
       .then((data) => {
         setAllWords(data);

@@ -5,24 +5,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const port = 3001;
+// const port = 3001;
+const port = process.env.PORT || 3001;
 
 // Use .config file to get login information
 var config = require("./config");
 const db = mysql.createConnection(config.databaseOptions);
-/*
-//////////////////////////////////////////////////////
-const app = express();
-const port = process.env.PORT || 3001;
-
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-});
-//////////////////////////////////////////////////////
-*/
 
 // Use cors
 app.use(cors());

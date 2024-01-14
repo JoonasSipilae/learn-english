@@ -1,31 +1,39 @@
 body {
   background-color: #eaeaea;
-  padding-top: 10px;
   padding-bottom: 10px;
+  font-family: Arial, sans-serif;
 }
 
 .App {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.thegame-text {
+  color: #000000;
+  padding: 0px;
+  font-size: larger;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: Arial, sans-serif;
 }
-
 .thegame {
-  padding-top: 10px;
-  padding-bottom: 10px;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 .thegame p {
   padding-right: 10px;
 }
 .thegame input {
-  margin-top: 20px;
+  margin-top: 3px;
 }
 .thegame button {
-  margin-top: 8px;
+  margin-top: -10px;
 }
 
 .checkanswerbutton {
@@ -99,14 +107,14 @@ button:active {
   justify-content: center; /* Center content vertically */
   font-size: larger;
 
-  background-color: #b9d693;
+  background-color: #dddddd;
   border: #000000;
   border-width: 2px;
   border-style: outset;
   border-radius: 20px;
 
-  padding-left: 40px;
-  padding-right: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
   padding-bottom: 20px;
 }
 .endscreen ul {
@@ -228,6 +236,12 @@ button:active {
   margin: 5px;
 }
 
+.panel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .authpanel {
   background-color: #c0c0c0;
   border: #000000;
@@ -235,9 +249,18 @@ button:active {
   border-style: outset;
   border-radius: 20px;
 
+  min-width: 350px;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 20px;
+  margin: 20px;
 }
 
 .authpanel button {
@@ -259,9 +282,20 @@ button:active {
   border-style: outset;
   border-radius: 20px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 20px;
+  margin: 20px;
+}
+
+.managepanel h1,
+h2 {
+  padding-bottom: 10px;
 }
 
 .managepanel button {
@@ -277,4 +311,35 @@ button:active {
 
 .listid {
   color: rgb(160, 0, 0);
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 5vh;
+  background-color: #333333;
+  color: azure;
+  text-decoration: none;
+}
+
+.nav-links {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+}
+
+.info-bg {
+  background-color: rgb(34, 34, 34);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #ffffff;
+  padding-bottom: 20px;
+  min-height: 91vh;
 }

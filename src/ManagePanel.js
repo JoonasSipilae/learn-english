@@ -111,25 +111,26 @@ const ManagePanel = () => {
   // If user is not authenticated, show password input field
   if (!authenticated) {
     return (
-      <div className="authpanel">
-        <h2>Manage Panel</h2>
-        <label htmlFor="password">Enter Password: </label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <div className="panel-container">
+        <div className="authpanel">
+          <h2>Manage Panel</h2>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button onClick={handleAuthentication}>
-          {authenticated ? "Re-authenticate" : "Authenticate"}
-        </button>
-        {authenticated && showAdminPanel && (
-          <button onClick={handleToggleAdminPanel}>
-            {contentsHidden ? "Show Panel" : "Hide Panel"}
+          <button onClick={handleAuthentication}>
+            {authenticated ? "Re-authenticate" : "Authenticate"}
           </button>
-        )}
+          {authenticated && showAdminPanel && (
+            <button onClick={handleToggleAdminPanel}>
+              {contentsHidden ? "Show Panel" : "Hide Panel"}
+            </button>
+          )}
+        </div>
       </div>
     );
   }

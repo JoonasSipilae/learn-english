@@ -52,10 +52,13 @@ const ManagePanel = () => {
       }
 
       // Make API request to add word to the database
-      await axios.post("http://localhost:3001/addWord", {
-        finnish: finnishWord,
-        english: englishWord,
-      });
+      await axios.post(
+        "https://learn-english-123-server.onrender.com/words/addWord",
+        {
+          finnish: finnishWord,
+          english: englishWord,
+        }
+      );
 
       alert("Word added successfully!");
 
@@ -86,7 +89,9 @@ const ManagePanel = () => {
   const handleDeleteWord = async () => {
     try {
       // Make API request to delete word by ID
-      await axios.delete(`http://localhost:3001/word/${deleteId}`);
+      await axios.delete(
+        `https://learn-english-123-server.onrender.com/words/${deleteId}`
+      );
       alert(`Word with ID ${deleteId} deleted successfully!`);
       setDeleteId("");
     } catch (error) {

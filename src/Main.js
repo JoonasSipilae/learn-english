@@ -1,7 +1,6 @@
 // Imports
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css"; // Import the CSS file
-import ManagePanel from "./ManagePanel"; // Manage panel
 
 function Main() {
   // Set States

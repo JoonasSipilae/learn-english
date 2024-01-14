@@ -17,13 +17,25 @@ app.use(bodyParser.json());
 
 // Get table from database
 app.get("/words", (req, res) => {
+  console.log("Request received at /words");
   const query = "SELECT * FROM word";
   db.query(query, (err, result) => {
-    if (err) throw err;
+    if (err) {
+      console.error("Error querying database:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    console.log("Sending words:", result);
     res.send(result);
   });
 });
 
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+
+/*
 // Add word to the table
 app.post("/addWord", (req, res) => {
   const { finnish, english } = req.body;
@@ -58,13 +70,8 @@ app.delete("/word/:id", (req, res) => {
   });
 });
 
-/*
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 */
-
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Server is running on port ${port}`);
-});
 

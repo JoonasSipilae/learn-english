@@ -28,7 +28,7 @@ function Main() {
   // Fetch words from database
   const fetchWords = () => {
   //fetch("http://localhost:3001/words")
-    fetch("https://learn-english-llmo.onrender.com/")
+    fetch("https://learn-english-llmo.onrender.com/words")
       .then((response) => response.json())
       .then((data) => {
         setAllWords(data);

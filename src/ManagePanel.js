@@ -71,7 +71,10 @@ const ManagePanel = () => {
   const handleDisplayAllWords = async () => {
     try {
       // Make API request to get all words from the database
-      const response = await axios.get("http://localhost:3001/words");
+      //const response = await axios.get("http://localhost:3001/words");
+      const response = await axios.get(
+        "https://learn-english-123-server.onrender.com/words"
+      );
       setAllWords(response.data);
       setShowWords(!showWords); // Toggle visibility
     } catch (error) {

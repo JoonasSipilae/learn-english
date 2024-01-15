@@ -1,38 +1,40 @@
-// Use mysql and express
+// THIS CODE IS RUNNING ON ANOTHER SERVER
+// https://learn-english-123-server.onrender.com/words
 const express = require("express");
-const mysql = require("mysql");
 const bodyParser = require("body-parser");
+const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
-// const port = 3001;
 const port = process.env.PORT || 3001;
 
-// Use .config file to get login information
-var config = require("./config");
-const db = mysql.createConnection(config.databaseOptions);
-
-// Use cors
 app.use(cors());
 app.use(bodyParser.json());
 
-// Get table from database
+var config = require("../config");
+const db = mysql.createConnection(config.databaseOptions);
+
+app.use(cors());
+
+// GET
 app.get("/words", (req, res) => {
   console.log("Request received at /words");
+
   const query = "SELECT * FROM word";
+
   db.query(query, (err, result) => {
     if (err) {
       console.error("Error querying database:", err);
       res.status(500).send("Internal Server Error");
       return;
     }
-    console.log("Sending words:", result);
-    res.send(result);
+    res.json(result);
   });
 });
 
-// Add word to the table
+// POST
 app.post("/addWord", (req, res) => {
+  console.log("Received POST request at /addWord", req.body); // Debugging
   const { finnish, english } = req.body;
   const query = "INSERT INTO word (finnish, english) VALUES (?, ?)";
 
@@ -46,21 +48,20 @@ app.post("/addWord", (req, res) => {
   });
 });
 
-// Delete word with matching ID from database
+// DELETE
 app.delete("/word/:id", (req, res) => {
+  console.log(`Received DELETE request at /word/${req.params.id}`); // Debugging
   const { id } = req.params;
-
   const query = "DELETE FROM word WHERE id = ?";
+
   db.query(query, [id], (err, result) => {
     if (err) {
       console.error("Error deleting word:", err);
       return res.status(500).send("Internal Server Error");
     }
-
     if (result.affectedRows === 0) {
       return res.status(404).send("Word not found");
     }
-
     res.status(200).send("Word deleted successfully");
   });
 });

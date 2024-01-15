@@ -31,7 +31,9 @@ const ManagePanel = () => {
     if (authenticated) {
       const fetchWords = async () => {
         try {
-          const response = await axios.get("http://localhost:3001/words");
+          const response = await axios.get(
+            "https://learn-english-123-server.onrender.com/words"
+          );
           setAllWords(response.data);
         } catch (error) {
           console.error("Error fetching words:", error);
@@ -43,6 +45,7 @@ const ManagePanel = () => {
     }
   }, [authenticated]);
 
+  // POST
   const handleAddWord = async () => {
     try {
       // Check that both fin and eng fields are filled
@@ -53,13 +56,12 @@ const ManagePanel = () => {
 
       // Make API request to add word to the database
       await axios.post(
-        "https://learn-english-123-server.onrender.com/words/addWord",
+        "https://learn-english-123-server.onrender.com/addWord",
         {
           finnish: finnishWord,
           english: englishWord,
         }
       );
-
       alert("Word added successfully!");
 
       // Clear input fields after successful addition
@@ -67,14 +69,14 @@ const ManagePanel = () => {
       setEnglishWord("");
     } catch (error) {
       console.error("Error adding word:", error);
-      alert("Error adding word. Please try again.");
+      alert("Error adding word. Please try again.", error);
     }
   };
 
+  // GET
   const handleDisplayAllWords = async () => {
     try {
       // Make API request to get all words from the database
-      //const response = await axios.get("http://localhost:3001/words");
       const response = await axios.get(
         "https://learn-english-123-server.onrender.com/words"
       );
@@ -86,13 +88,16 @@ const ManagePanel = () => {
     }
   };
 
+  // DELETE
   const handleDeleteWord = async () => {
     try {
       // Make API request to delete word by ID
       await axios.delete(
-        `https://learn-english-123-server.onrender.com/words/${deleteId}`
+        `https://learn-english-123-server.onrender.com/word/${deleteId}`
       );
       alert(`Word with ID ${deleteId} deleted successfully!`);
+
+      // Clear input fields after successful deletion
       setDeleteId("");
     } catch (error) {
       console.error("Error deleting word:", error);

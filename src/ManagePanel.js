@@ -23,7 +23,7 @@ const ManagePanel = () => {
     } else {
       alert("Incorrect password. Please try again.");
     }
-    setPassword(""); // Empty finput field after submitting
+    setPassword(""); // Empty input field after submitting
   };
 
   useEffect(() => {
@@ -53,7 +53,6 @@ const ManagePanel = () => {
         alert("Please enter both Finnish and English words.");
         return;
       }
-
       // Make API request to add word to the database
       await axios.post(
         "https://learn-english-123-server.onrender.com/addWord",
@@ -169,6 +168,7 @@ const ManagePanel = () => {
         </div>
       )}
 
+      {/* Input fields and styling */}
       {!contentsHidden && (
         <>
           <div style={{ marginBottom: "8px" }}>

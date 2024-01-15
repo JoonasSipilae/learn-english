@@ -21,6 +21,9 @@ function Info() {
       <text>Use the "Panel" page to make changes to contents.</text>
       <text>Dont forget to take breaks!</text>
       <br></br>
+      <p>
+        <i>psst... the password is admin123</i>
+      </p>
       <h2>:)</h2>
     </div>
   );

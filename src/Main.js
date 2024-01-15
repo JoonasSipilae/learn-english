@@ -89,11 +89,8 @@ function Main() {
 
     // Display a warning and prevent checking answer if the input is empty
     if (userInput.trim() === "") {
-      // DISPLAYING WARNING DOESNT WORK. WHY ???
-      setFeedbackText(
-        "Cannot submit an empty answer. Please enter a valid answer."
-      );
-      setDisplayFeedback(true); // Show the feedback
+      // Display error in browser if trying to check empty answer
+      alert("Cannot submit an empty answer. Please enter a valid answer.");
       setIsCorrect(null); // Reset isCorrect state
       return;
     }

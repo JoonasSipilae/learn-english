@@ -1,9 +1,11 @@
+/* Universal */
 body {
   background-color: #eaeaea;
   padding-bottom: 10px;
   font-family: Arial, sans-serif;
 }
 
+/* Universal in Main */
 .App {
   display: block;
   flex-direction: column;
@@ -11,6 +13,7 @@ body {
   justify-content: center;
 }
 
+/* Main game styling */
 .thegame-text {
   color: #000000;
   padding: 0px;
@@ -42,6 +45,7 @@ body {
   border-style: outset;
 }
 
+/* Universal element styling */
 h1,
 h2 {
   padding-top: 10px;
@@ -76,6 +80,7 @@ button:active {
   background-color: #2f5191;
 }
 
+/* Feedback text */
 .feedback-container {
   height: 30px; /* Adjust the height as needed */
   margin-bottom: 10px;
@@ -94,12 +99,14 @@ button:active {
   color: red; /* Set the text color to red for incorrect answers */
 }
 
+/* Progress meter */
 .progresstext {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Endscreen */
 .endscreen {
   display: flex;
   flex-direction: column;
@@ -130,6 +137,7 @@ button:active {
   align-items: center;
 }
 
+/* Endscreen buttons */
 .restartbutton {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -159,6 +167,7 @@ button:active {
   background-color: rgb(30, 30, 30);
 }
 
+/* Main menu buttons */
 .switchbutton {
   width: 180px;
   height: 60px;
@@ -186,13 +195,13 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center content vertically */
+  justify-content: center;
 }
 .start2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center content vertically */
+  justify-content: center;
 }
 
 .formbuttons {
@@ -200,6 +209,7 @@ button:active {
   justify-content: center;
 }
 
+/* Managepanel buttons */
 .addwordbutton {
   background-color: rgb(10, 148, 10);
   min-width: 90px;
@@ -239,6 +249,7 @@ button:active {
   margin: 5px;
 }
 
+/* Auth panel styling */
 .panel-container {
   display: flex;
   justify-content: center;
@@ -278,6 +289,7 @@ button:active {
   background-color: rgb(245, 245, 245);
 }
 
+/* Manage panel styling */
 .managepanel {
   background-color: #c0c0c0;
   border: #000000;
@@ -316,6 +328,7 @@ h2 {
   color: rgb(160, 0, 0);
 }
 
+/* Navbar styling */
 nav {
   display: flex;
   justify-content: space-around;
@@ -335,6 +348,7 @@ nav {
   text-decoration: none;
 }
 
+/* Info page styling */
 .info-bg {
   background-color: rgb(34, 34, 34);
   display: flex;

@@ -1,22 +1,22 @@
-// Imports
+/** Imports */
 import React, { useState, useEffect, useRef } from "react";
-import "./App.css"; // Import the CSS file
+import "./App.css";
 
 function Main() {
-  // Set States
-  const [allWords, setAllWords] = useState([]);
-  const [shuffledWords, setShuffledWords] = useState([]);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [userInput, setUserInput] = useState("");
-  const [isCorrect, setIsCorrect] = useState(null);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
-  const [feedbackText, setFeedbackText] = useState("");
-  const [displayFeedback, setDisplayFeedback] = useState(false);
-  const [correctAnswers, setCorrectAnswers] = useState([]);
-  const [incorrectAnswers, setIncorrectAnswers] = useState([]);
-  const [displayCorrectAnswers, setDisplayCorrectAnswers] = useState(false);
-  const [displayIncorrectAnswers, setDisplayIncorrectAnswers] = useState(false);
+  /** Set States */
+  const [allWords, setAllWords] = useState([]); // List of all words
+  const [shuffledWords, setShuffledWords] = useState([]); // Store words in random order
+  const [currentWordIndex, setCurrentWordIndex] = useState(0); // Current translatable word
+  const [userInput, setUserInput] = useState(""); // Check user input
+  const [isCorrect, setIsCorrect] = useState(null); // Is the answer correct ?
+  const [correctCount, setCorrectCount] = useState(0); // Count correct answers
+  const [gameOver, setGameOver] = useState(false); // Has the game ended ?
+  const [feedbackText, setFeedbackText] = useState(""); // Set feedback tect
+  const [displayFeedback, setDisplayFeedback] = useState(false); // Show feedback text
+  const [correctAnswers, setCorrectAnswers] = useState([]); // Add to "correct" -array
+  const [incorrectAnswers, setIncorrectAnswers] = useState([]); // Add to "incorrect" -array
+  const [displayCorrectAnswers, setDisplayCorrectAnswers] = useState(false); // Toggle endscreen correct answers
+  const [displayIncorrectAnswers, setDisplayIncorrectAnswers] = useState(false); // Toggle endscreen incorrect answers
   const [translationDirection, setTranslationDirection] =
     useState("finnishToEnglish"); // Fin to Eng or Eng to Fin
   const [gameStarted, setGameStarted] = useState(false); // Track whether the game has started
@@ -25,9 +25,8 @@ function Main() {
     fetchWords();
   }, []);
 
-  // Fetch words from database
+  /** Fetch words from database */
   const fetchWords = () => {
-    //fetch("http://localhost:3001/words")
     fetch("https://learn-english-123-server.onrender.com/words")
       .then((response) => response.json())
       .then((data) => {
@@ -37,7 +36,7 @@ function Main() {
       .catch((error) => console.error("Error:", error));
   };
 
-  // Translation direction eng-fin or fin-eng
+  /** Translation direction eng-fin or fin-eng */
   const toggleTranslationDirection = () => {
     setTranslationDirection((prevDirection) =>
       prevDirection === "finnishToEnglish"
@@ -46,14 +45,14 @@ function Main() {
     );
   };
 
-  // Get current translatable word
+  /** Get current translatable word */
   const getCurrentWord = () => {
     if (
       shuffledWords.length === 0 ||
       currentWordIndex < 0 ||
       currentWordIndex >= shuffledWords.length
     ) {
-      // Handle the case when shuffledWords is empty or currentWordIndex is out of bounds
+      /** Handle the case when shuffledWords is empty or currentWordIndex is out of bounds */
       return "";
     }
 
@@ -68,26 +67,26 @@ function Main() {
     setUserInput(event.target.value);
   };
 
-  // Enter = submit
+  /** Enter = submit */
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       checkAnswer();
     }
   };
 
-  // If the game hasn't started, do nothing
+  /** If the game hasn't started, do nothing */
   const checkAnswer = () => {
     if (!gameStarted) {
       return;
     }
 
-    // If list of words is empty
+    /** If list of words is empty */
     if (shuffledWords.length === 0 || gameOver) {
       console.error("No words available or game over.");
       return;
     }
 
-    // Display a warning and prevent checking answer if the input is empty
+    /** Display a warning and prevent checking answer if the input is empty */
     if (userInput.trim() === "") {
       // Display error in browser if trying to check empty answer
       alert("Cannot submit an empty answer. Please enter a valid answer.");
@@ -95,12 +94,12 @@ function Main() {
       return;
     }
 
-    // Works in any upper/lowercase combination in answer
+    /** Works in any upper/lowercase combination in answer*/
     const currentWord = shuffledWords[currentWordIndex];
     const userInputLower = userInput.toLowerCase();
     let correctAnswer;
 
-    // Fetch answer in the right language
+    /** Fetch answer in the right language */
     if (translationDirection === "finnishToEnglish") {
       correctAnswer = currentWord.english.toLowerCase();
     } else {
@@ -111,7 +110,7 @@ function Main() {
 
     setIsCorrect(isAnswerCorrect);
 
-    // Keep count of right / wrong answers. Show feedback
+    /** Keep count of right / wrong answers. Show feedback */
     if (isAnswerCorrect) {
       setCorrectCount((count) => count + 1);
       setCorrectAnswers((prevAnswers) => [...prevAnswers, currentWord]); // Add correct answer to the array
@@ -119,7 +118,7 @@ function Main() {
       setIncorrectAnswers((prevAnswers) => [...prevAnswers, currentWord]); // Add incorrect answer to the array
     }
 
-    // Show correct or incorrect message
+    /** Show correct or incorrect message */
     setFeedbackText(isAnswerCorrect ? "Correct!" : "Incorrect.");
 
     if (!isAnswerCorrect) {
@@ -140,7 +139,7 @@ function Main() {
     }
   };
 
-  // Show warning when trying to refresh / leave page while game is in progress
+  /** Show warning when trying to refresh / leave page while game is in progress */
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       if (gameStarted) {
@@ -157,11 +156,12 @@ function Main() {
     };
   }, [gameStarted]);
 
-  // set gamestarted to true when called
+  /** set gamestarted to true when called */
   const startGame = () => {
     setGameStarted(true);
   };
 
+  /** When game is restarted */
   const restartGame = () => {
     // Shuffle the array again when restarting the game
     // Set states to default and reset game score
@@ -177,27 +177,28 @@ function Main() {
     setGameStarted(false);
   };
 
-  //Modifies translatable word so that it starts with a capital letter
+  /** Modifies translatable word so that it starts with a capital letter and rest are lowercase */
   const formatWord = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
   };
 
-  // progresscounter i / total
+  /** progresscounter i / total */
   const progressCounter = `${currentWordIndex + 1} / ${shuffledWords.length}`;
   const inputRef = useRef(null); // Create a ref to store the input element
 
   useEffect(() => {
     // Focus on the input element when the component mounts
     // This effect runs only once, on mount
-    // This doesnt work when the game is restarted. Fix ??? Used to work???
+    // This doesnt work when the game is restarted. No idea why
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
 
-  // Return
+  /** Return */
   return (
     <div className="App">
+      {/* Start screen */}
       <div>
         <h1>Learn English app!</h1>
         {!gameStarted && (
@@ -222,6 +223,7 @@ function Main() {
           </>
         )}
 
+        {/* Game itself */}
         {gameStarted && (
           <>
             <div className="progresstext">
@@ -273,6 +275,7 @@ function Main() {
         )}
       </div>
 
+      {/* Endscreen */}
       {gameOver && (
         <div className="endscreen">
           <h2>Thank you for playing!</h2>

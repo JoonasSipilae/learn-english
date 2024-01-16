@@ -1,20 +1,20 @@
-// Imports
+/** Imports */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// Set States
+/** Set States */
 const ManagePanel = () => {
-  const [password, setPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
-  const [finnishWord, setFinnishWord] = useState("");
-  const [englishWord, setEnglishWord] = useState("");
-  const [deleteId, setDeleteId] = useState("");
-  const [allWords, setAllWords] = useState([]);
-  const [showWords, setShowWords] = useState(false);
-  const [showAdminPanel, setShowAdminPanel] = useState(true); // Initially visible
-  const [contentsHidden, setContentsHidden] = useState(false);
+  const [password, setPassword] = useState(""); // Password, default empty
+  const [authenticated, setAuthenticated] = useState(false); // Has user submitted correct password ?
+  const [finnishWord, setFinnishWord] = useState(""); // Add new finnish word to table
+  const [englishWord, setEnglishWord] = useState(""); // Add new english word to table
+  const [deleteId, setDeleteId] = useState(""); // Delete word with ID
+  const [allWords, setAllWords] = useState([]); // Get all words
+  const [showWords, setShowWords] = useState(false); // Toggle visibility
+  const [showAdminPanel, setShowAdminPanel] = useState(true); // Show authentication panel, Initially visible
+  const [contentsHidden, setContentsHidden] = useState(false);// Show admin panel, Initially invisible
 
-  // Add password authentication to access panel
+  /** Add password authentication to access panel */
   const handleAuthentication = () => {
     // Check if the entered password is correct
     if (password === "admin123") {
@@ -27,9 +27,10 @@ const ManagePanel = () => {
   };
 
   useEffect(() => {
-    // If authenticated, fetch words
+    /** If authenticated, fetch words */
     if (authenticated) {
       const fetchWords = async () => {
+        // Fetch words from server running on render
         try {
           const response = await axios.get(
             "https://learn-english-123-server.onrender.com/words"
@@ -45,7 +46,7 @@ const ManagePanel = () => {
     }
   }, [authenticated]);
 
-  // POST
+  /** POST */
   const handleAddWord = async () => {
     try {
       // Check that both fin and eng fields are filled
@@ -72,7 +73,7 @@ const ManagePanel = () => {
     }
   };
 
-  // GET
+  /** GET */
   const handleDisplayAllWords = async () => {
     try {
       // Make API request to get all words from the database
@@ -87,7 +88,7 @@ const ManagePanel = () => {
     }
   };
 
-  // DELETE
+  /** DELETE */
   const handleDeleteWord = async () => {
     try {
       // Make API request to delete word by ID
@@ -104,7 +105,7 @@ const ManagePanel = () => {
     }
   };
 
-  // Toggle admin panels visibility
+  /** Toggle admin panels visibility */
   const handleToggleAdminPanel = () => {
     setShowAdminPanel(!showAdminPanel);
   };
@@ -120,7 +121,7 @@ const ManagePanel = () => {
     }
   };
 
-  // If user is not authenticated, show password input field
+  /** If user is not authenticated, show password input field */
   if (!authenticated) {
     return (
       <div className="panel-container">
@@ -147,7 +148,7 @@ const ManagePanel = () => {
     );
   }
 
-  // If user is authenticated, show contents of panel
+  /** If user is authenticated, show contents of panel */
   return (
     <div className="managepanel">
       <h1>Manage panel</h1>
@@ -239,6 +240,7 @@ const ManagePanel = () => {
             </div>
           )}
 
+          {/* Delete button */}
           <div style={{ marginTop: "20px" }}>
             <label htmlFor="deleteId">Delete word: </label>
             <input
@@ -249,7 +251,6 @@ const ManagePanel = () => {
               onChange={(e) => setDeleteId(e.target.value)}
             />
 
-            {/* Delete button */}
             <button className="deletebutton" onClick={handleDeleteWord}>
               Delete Word
             </button>

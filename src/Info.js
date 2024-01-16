@@ -1,7 +1,7 @@
+/** Import */
 import "./App.css";
 
-//All the necessary information in text form
-
+/** All the necessary information in text form */
 function Info() {
   return (
     <div className="info-bg">

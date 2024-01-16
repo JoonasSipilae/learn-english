@@ -1,5 +1,7 @@
-// THIS CODE IS RUNNING ON ANOTHER SERVER
+/** THIS CODE IS RUNNING ON ANOTHER SERVER */
 // https://learn-english-123-server.onrender.com/words
+
+// Use express, mysql, cors and bodyparser
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
@@ -11,12 +13,13 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Connection info is stored at config.js
 var config = require("./config");
 const db = mysql.createConnection(config.databaseOptions);
 
 app.use(cors());
 
-// GET
+/** GET */
 app.get("/words", (req, res) => {
   console.log("Request received at /words");
 
@@ -32,7 +35,7 @@ app.get("/words", (req, res) => {
   });
 });
 
-// POST
+/** POST */
 app.post("/addWord", (req, res) => {
   console.log("Received POST request at /addWord", req.body); // Debugging
   const { finnish, english } = req.body;
@@ -48,7 +51,7 @@ app.post("/addWord", (req, res) => {
   });
 });
 
-// DELETE
+/** DELETE */
 app.delete("/word/:id", (req, res) => {
   console.log(`Received DELETE request at /word/${req.params.id}`); // Debugging
   const { id } = req.params;
@@ -66,6 +69,7 @@ app.delete("/word/:id", (req, res) => {
   });
 });
 
+/** Log to console when server is running + on what port */
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

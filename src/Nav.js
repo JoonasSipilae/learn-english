@@ -1,14 +1,15 @@
+/** Imports */
 import "./App.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-//Navigation bar
-
+/** Navigation bar */
 function Nav() {
   const navStyle = {
     color: "white",
   };
 
+/** Return */
   return (
     <div className="nav">
       <nav>

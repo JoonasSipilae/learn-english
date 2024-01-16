@@ -2,6 +2,8 @@
 
 curl: https://learn-english-123.onrender.com/
 
+[![Project video](https://youtu.be/-CVtge5ls2k?si=wid19M-cofw-hC5H/default.jpg)](https://youtu.be/-CVtge5ls2k?si=YpE-UvDcM9bxJsAl "Project video")
+
 # How to use the application ?
 
 On "Main" page:

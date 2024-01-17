@@ -10,23 +10,30 @@ function Info() {
         <i>Author: Joonas Sipilä</i>
       </h3>
 
-      <text>
-        <br></br>
-      </text>
+      <br></br>
 
       <text>
         This web app has been designed to help students learn english.
       </text>
       <text>Use the "Main" page to start learning.</text>
       <text>Use the "Panel" page to make changes to contents.</text>
-      <p>
+
+      <br></br>
+
+      <text>
         After some inactivity time, connection to the server is automatically
-        cut. Connection will automatically re-establish in a minute.
-      </p>
+        cut.
+      </text>
+      <text>Connection will automatically re-establish in a minute.</text>
+
+      <br></br>
+
       <p>
         <i>psst... the password is admin123</i>
       </p>
+
       <br></br>
+
       <h2>:)</h2>
     </div>
   );

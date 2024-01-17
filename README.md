@@ -13,7 +13,7 @@ On "Main" page:
 - Once played through you will see a final score as well as what words
   you got right and what were wrong.
 
-![Main page](https://ibb.co/KGRDSdy.png)
+![Main page](image.png)
 
 On "Panel" page:
 

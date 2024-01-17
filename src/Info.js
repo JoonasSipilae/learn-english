@@ -19,11 +19,14 @@ function Info() {
       </text>
       <text>Use the "Main" page to start learning.</text>
       <text>Use the "Panel" page to make changes to contents.</text>
-      <text>Dont forget to take breaks!</text>
-      <br></br>
+      <p>
+        After some inactivity time, connection to the server is automatically
+        cut. Connection will automatically re-establish in a minute.
+      </p>
       <p>
         <i>psst... the password is admin123</i>
       </p>
+      <br></br>
       <h2>:)</h2>
     </div>
   );

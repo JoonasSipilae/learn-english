@@ -10,7 +10,10 @@ On "Main" page:
 
 - Click the gray button to toggle translation direction between eng->fin and fin->eng.
 - Click Start game to start playing.
-- Once played through you will see a final score as well as what words you got right and what were wrong.
+- Once played through you will see a final score as well as what words
+  you got right and what were wrong.
+
+![Main page](https://ibb.co/KGRDSdy)
 
 On "Panel" page:
 
@@ -19,6 +22,15 @@ On "Panel" page:
 - Click "Display all words" to see all words in database.
 - Click "Hide panel" or exit tab to exit panel (you need to authenticate again when entering the tab again)
 - Type words ID and click "Delete word" to delete it from the database.
+
+![Panel page](https://ibb.co/KGRDSdy)
+
+On "Info" page:
+
+- Information about the project
+- Password for demonstrative purposes
+
+![Panel page](https://ibb.co/ykD9Z8b)
 
 # What is the purpose of the application ?
 

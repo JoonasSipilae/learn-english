@@ -1,7 +1,8 @@
 # learn-english
 
-curl: https://learn-english-123.onrender.com/
+Project url: https://learn-english-123.onrender.com/
 
+CLICK ME FOR THE PROJECT VIDEO!!!
 [![Project video](image-3.png)](https://youtu.be/-CVtge5ls2k?si=YpE-UvDcM9bxJsAl "Project video")
 
 # How to use the application ?

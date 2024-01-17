@@ -23,14 +23,14 @@ On "Panel" page:
 - Click "Hide panel" or exit tab to exit panel (you need to authenticate again when entering the tab again)
 - Type words ID and click "Delete word" to delete it from the database.
 
-![Panel page](https://ibb.co/KGRDSdy.png)
+![Panel page](image-1.png)
 
 On "Info" page:
 
 - Information about the project
 - Password for demonstrative purposes
 
-![Panel page](https://ibb.co/ykD9Z8b.png)
+![Panel page](image-2.png)
 
 # What is the purpose of the application ?
 

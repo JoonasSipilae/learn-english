@@ -13,7 +13,7 @@ On "Main" page:
 - Once played through you will see a final score as well as what words
   you got right and what were wrong.
 
-![Main page](https://ibb.co/KGRDSdy)
+![Main page](https://ibb.co/KGRDSdy.png)
 
 On "Panel" page:
 
@@ -23,14 +23,14 @@ On "Panel" page:
 - Click "Hide panel" or exit tab to exit panel (you need to authenticate again when entering the tab again)
 - Type words ID and click "Delete word" to delete it from the database.
 
-![Panel page](https://ibb.co/KGRDSdy)
+![Panel page](https://ibb.co/KGRDSdy.png)
 
 On "Info" page:
 
 - Information about the project
 - Password for demonstrative purposes
 
-![Panel page](https://ibb.co/ykD9Z8b)
+![Panel page](https://ibb.co/ykD9Z8b.png)
 
 # What is the purpose of the application ?
 

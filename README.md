@@ -5,6 +5,9 @@ Project url: https://learn-english-123.onrender.com/
 CLICK ME FOR THE PROJECT VIDEO!!!
 [![Project video](image-3.png)](https://youtu.be/-CVtge5ls2k?si=YpE-UvDcM9bxJsAl "Project video")
 
+If the website doesnt load words immediately, please give it a minute to reconnect.
+The free hosting at render spins down server connection after some inactivity.
+
 # How to use the application ?
 
 On "Main" page:

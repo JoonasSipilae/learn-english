@@ -3,7 +3,7 @@
 var databaseOptions = {
   host: "mydb.tamk.fi",
   user: "dqjosi",
-  password: "SalasanaEnkku24",
+  password: "", (Älä deployaa)
   database: "dbdqjosi2",
   multipleStatements: true,
   // Enable multiple SQL statements.

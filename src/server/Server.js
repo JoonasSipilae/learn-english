@@ -1,5 +1,4 @@
 /** THIS CODE IS RUNNING ON ANOTHER SERVER */
-// https://learn-english-123-server.onrender.com/words
 
 // Use express, mysql, cors and bodyparser
 const express = require("express");
